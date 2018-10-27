@@ -33,7 +33,12 @@
                         <h4>Current Orders</h4>
                       </div>
                       <div class="card-body">
-                        <ul id="tableList" class="list-group"></ul>
+                        <ul id="tableList" class="list-group">
+                            <li id="name"></li>
+                            <li id="number"></li>
+                            <li id="email"></li>
+                            <li id="id"></li>
+                        </ul>
                       </div>
                     </div>
             
@@ -59,6 +64,20 @@
                 </footer>
             
               </div>
-    
+              <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+              <script type="text/javascript">
+               $.get("/api/orders/", function(data) {
+                  console.log(data);
+                  for(var i = 0; i < data.length; i++){
+                  // $("#tableList").text(JSON.stringify(data));
+                  $("#name").text(data[i].name);
+                  $("#number").text(data[i].phoneNumber);
+                  $("#email").text(data[i].email);
+                  $("#id").text(data[i].uniqueID);
+                  }
+                  
+   
+  });
+              </script>
 </body>
 </html>
