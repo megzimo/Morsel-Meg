@@ -65,10 +65,34 @@
                   </div>
                 </div>
             
+                <script type="text/javascript">
+                  // Question: What does this code do?
+                  $("#add-btn").on("click", function(event) {
+                    event.preventDefault();
+                    var newCookie = {
+                      name: $("#reserve-name").val().trim(),
+                      phone: $("#reserve-phone").val().trim(),
+                      email: $("#reserve-email").val().trim(),
+                      id: $("#reserve-unique-id").val().trim()
+                    };
+              
+                    // Question: What does this code do??
+                    $.post("/api/cookies", newCookie)
+                      .then(function(data) {
+                        console.log("add.html", data);
+                        alert("Adding character...");
+                      });
+                  });
+                </script>
+
+
+
+
+
             
                 <footer class="footer">
                   <div class="container">
-                    <p><a href="/api/tables">API Table Link</a> | <a href="/api/waitlist">API Wait List</a>
+                    <p><a href="/api/orders">API order Link</a> | <a href="/api/waitlist">API Wait List</a>
                   </div>
                 </footer>
             
